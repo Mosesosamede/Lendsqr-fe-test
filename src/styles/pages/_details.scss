@@ -1,0 +1,117 @@
+@use '../variables' as *;
+@use '../mixins' as m;
+
+.details-page {
+  padding-top: 100px;
+  @include m.mobile { padding-top: 70px; }
+
+  &__content {
+    margin-left: 283px;
+    padding: 60px;
+    @include m.mobile { margin-left: 0; padding: 20px; }
+  }
+
+  &__header-card {
+    background: $white;
+    border-radius: 4px;
+    box-shadow: 3px 5px 20px rgba(0, 0, 0, 0.04);
+    padding: 30px;
+    margin-bottom: 30px;
+
+    .top-summary {
+      display: flex;
+      align-items: center;
+      gap: 40px;
+      margin-bottom: 40px;
+
+      @include m.mobile {
+        flex-direction: column;
+        text-align: center;
+        gap: 20px;
+      }
+
+      .user-avatar {
+        width: 100px;
+        height: 100px;
+        border-radius: 50%;
+        background: #D9D9D9;
+        @include m.flex-center;
+        font-size: 40px;
+      }
+
+      .user-main-info {
+        h3 { font-size: 22px; color: $primary-blue; margin-bottom: 4px; }
+        p { font-size: 14px; }
+      }
+
+      .divider {
+        width: 1px;
+        height: 80px;
+        background: rgba(84, 95, 125, 0.2);
+        @include m.mobile { display: none; }
+      }
+    }
+
+    .tabs {
+      display: flex;
+      gap: 50px;
+      overflow-x: auto;
+      border-bottom: 1px solid rgba(0,0,0,0.05);
+
+      .tab {
+        padding: 10px 15px;
+        font-size: 16px;
+        color: rgba(0, 0, 0, 0.8);
+        border-bottom: 2px solid transparent;
+        white-space: nowrap;
+
+        &--active {
+          color: $primary-teal;
+          border-bottom-color: $primary-teal;
+          font-weight: 500;
+        }
+      }
+    }
+  }
+
+  &__main-card {
+    background: $white;
+    padding: 30px;
+    border-radius: 4px;
+    box-shadow: 3px 5px 20px rgba(0, 0, 0, 0.04);
+
+    .section {
+      padding-bottom: 30px;
+      margin-bottom: 30px;
+      border-bottom: 1px solid rgba(33, 63, 125, 0.1);
+      &:last-child { border-bottom: none; }
+
+      h4 {
+        color: $primary-blue;
+        font-size: 16px;
+        margin-bottom: 30px;
+      }
+
+      .info-grid {
+        display: grid;
+        grid-template-columns: repeat(auto-fill, minmax(200px, 1fr));
+        gap: 30px;
+
+        .info-block {
+          .label {
+            font-size: 12px;
+            color: $text-gray;
+            text-transform: uppercase;
+            margin-bottom: 8px;
+            display: block;
+          }
+          .value {
+            font-size: 14px;
+            font-weight: 500;
+            color: $text-gray;
+          }
+        }
+      }
+    }
+  }
+}

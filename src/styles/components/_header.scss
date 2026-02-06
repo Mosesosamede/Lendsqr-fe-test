@@ -1,0 +1,106 @@
+@use '../variables' as *;
+@use '../mixins' as *;
+
+.header {
+  position: fixed;
+  top: 0;
+  left: 0;
+  right: 0;
+  height: 100px;
+  background: $white;
+  box-shadow: $shadow-md;
+  z-index: 1000;
+
+  @include flex-between;
+  padding: 0 60px;
+
+  @include mobile {
+    padding: 0 20px;
+    height: 70px;
+  }
+
+  &__left {
+    display: flex;
+    align-items: center;
+    gap: 100px;
+
+    @include mobile {
+      gap: 20px;
+    }
+  }
+
+  &__search {
+    display: flex;
+    width: 400px;
+
+    @include mobile {
+      display: none;
+    }
+
+    input {
+      flex: 1;
+      padding: 10px 15px;
+      border: 1px solid rgba(84, 95, 125, 0.2);
+      border-radius: 8px 0 0 8px;
+      outline: none;
+      font-size: 14px;
+
+      &::placeholder {
+        color: rgba(84, 95, 125, 0.7);
+      }
+    }
+
+    button {
+      background: $primary-teal;
+      width: 56px;
+      border-radius: 0 8px 8px 0;
+      border: none;
+      cursor: pointer;
+
+      @include flex-center;
+    }
+  }
+
+  &__right {
+    display: flex;
+    align-items: center;
+    gap: 30px;
+
+    .docs-link {
+      color: $primary-blue;
+      text-decoration: underline;
+      font-size: 16px;
+
+      @include mobile {
+        display: none;
+      }
+    }
+
+    .notification-btn {
+      position: relative;
+      cursor: pointer;
+    }
+
+    .user-profile {
+      display: flex;
+      align-items: center;
+      gap: 10px;
+
+      img {
+        width: 48px;
+        height: 48px;
+        border-radius: 50%;
+        object-fit: cover;
+      }
+
+      span {
+        color: $primary-blue;
+        font-weight: 500;
+
+        @include mobile {
+          display: none;
+        }
+      }
+    }
+  }
+}

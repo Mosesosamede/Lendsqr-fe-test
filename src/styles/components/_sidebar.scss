@@ -1,0 +1,76 @@
+@use '../variables' as *;
+@use '../mixins' as  *;
+
+.sidebar {
+  position: fixed;
+  left: 0;
+  top: 100px;
+  bottom: 0;
+  width: 283px;
+  background: $white;
+  box-shadow: 0px 5px 20px rgba(0, 0, 0, 0.04);
+  overflow-y: auto;
+  padding-top: 30px;
+  transition: transform 0.3s ease;
+  z-index: 900;
+
+  @include mobile {
+    top: 70px;
+    width: 240px;
+    transform: translateX(-100%);
+    &--open {
+      transform: translateX(0);
+    }
+  }
+
+  &__section {
+    margin-bottom: 30px;
+
+    &-title {
+      padding: 10px 30px;
+      font-size: 12px;
+      font-weight: 600;
+      color: $text-gray;
+      opacity: 0.8;
+      letter-spacing: 0.05em;
+    }
+  }
+
+  &__item {
+    display: flex;
+    align-items: center;
+    gap: 12px;
+    padding: 12px 30px;
+    color: $text-gray;
+    font-size: 16px;
+    opacity: 0.6;
+    border-left: 3px solid transparent;
+    transition: all 0.2s;
+
+    &:hover {
+      background: rgba(57, 205, 204, 0.06);
+      opacity: 1;
+    }
+
+    &--active {
+      background: rgba(57, 205, 204, 0.06);
+      border-left-color: $primary-teal;
+      opacity: 1;
+      color: $primary-blue;
+    }
+
+    &-icon {
+      font-size: 18px;
+      width: 20px;
+      text-align: center;
+    }
+  }
+
+  .switch-org {
+    margin-bottom: 40px;
+    font-weight: 500;
+    opacity: 1;
+    color: $primary-blue;
+    cursor: pointer;
+  }
+}

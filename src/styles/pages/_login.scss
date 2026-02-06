@@ -1,0 +1,115 @@
+@use '../variables' as *;
+@use '../mixins' as m;
+@use "sass:color";
+
+.login-page {
+  min-height: 100vh;
+  display: flex;
+  background: $white;
+
+  &__left {
+    flex: 1;
+    display: flex;
+    flex-direction: column;
+    padding: 60px 100px;
+
+    @include m.mobile {
+      display: none;
+    }
+
+    .logo { width: 174px; }
+
+    .illustration-wrapper {
+      flex: 1;
+      @include m.flex-center;
+      img {
+        max-width: 600px;
+        width: 100%;
+      }
+    }
+  }
+
+  &__right {
+    flex: 1;
+    @include m.flex-center;
+    padding: 40px;
+    box-shadow: 0px 15px 90px rgba(0, 0, 0, 0.03);
+
+    @include m.mobile {
+      padding: 20px;
+    }
+
+    .login-container {
+      width: 100%;
+      max-width: 450px;
+
+      .mobile-logo {
+        display: none;
+        margin-bottom: 60px;
+        @include m.mobile { display: block; text-align: center; }
+      }
+
+      h1 {
+        font-size: 40px;
+        color: $primary-blue;
+        margin-bottom: 10px;
+        font-weight: 700;
+      }
+
+      p {
+        font-size: 20px;
+        margin-bottom: 60px;
+        font-weight: 400;
+      }
+
+      .form-group {
+        margin-bottom: 24px;
+        position: relative;
+
+        input {
+          width: 100%;
+          padding: 15px;
+          border: 2px solid rgba(84, 95, 125, 0.15);
+          border-radius: 5px;
+          outline: none;
+          font-size: 14px;
+          &:focus { border-color: $primary-teal; }
+        }
+
+        .show-pwd {
+          position: absolute;
+          right: 15px;
+          top: 50%;
+          transform: translateY(-50%);
+          color: $primary-teal;
+          font-size: 12px;
+          font-weight: 600;
+          letter-spacing: 0.1em;
+        }
+      }
+
+      .forgot-pwd {
+        display: block;
+        color: $primary-teal;
+        font-size: 12px;
+        font-weight: 600;
+        margin-bottom: 30px;
+        text-transform: uppercase;
+        letter-spacing: 0.1em;
+      }
+
+      .login-btn {
+        width: 100%;
+        background: $primary-teal;
+        color: $white;
+        padding: 15px;
+        border-radius: 8px;
+        font-weight: 600;
+        text-transform: uppercase;
+        letter-spacing: 0.1em;
+        transition: background 0.2s;
+        &:hover { background: color.adjust($primary-teal, $lightness: -10%); }
+      }
+    }
+  }
+}

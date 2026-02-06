@@ -1,0 +1,315 @@
+@use '../variables' as *;
+@use '../mixins' as m;
+
+.users-page {
+  padding-top: 100px;
+  min-height: 100vh;
+  background-color: $bg-light;
+  @include m.mobile { padding-top: 70px; }
+
+  &__content {
+    margin-left: 283px;
+    padding: 60px;
+    max-width: calc(100vw - 283px);
+    overflow-x: hidden;
+
+    @include m.mobile {
+      margin-left: 0;
+      padding: 20px;
+      max-width: 100vw;
+    }
+
+    h2 {
+      font-size: 24px;
+      font-weight: 500;
+      color: $primary-blue;
+      margin-bottom: 40px;
+    }
+  }
+
+  &__stats {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(240px, 1fr));
+    gap: 26px;
+    margin-bottom: 40px;
+
+    .stat-card {
+      background: $white;
+      padding: 30px;
+      border-radius: 4px;
+      border: 1px solid rgba(33, 63, 125, 0.06);
+      box-shadow: 3px 5px 20px rgba(0, 0, 0, 0.04);
+      display: flex;
+      flex-direction: column;
+      gap: 12px;
+      min-width: 0;
+
+      &__icon-box {
+        width: 40px;
+        height: 40px;
+        border-radius: 50%;
+        flex-shrink: 0;
+        @include m.flex-center;
+      }
+
+      &__label {
+        font-size: 14px;
+        font-weight: 500;
+        color: $text-gray;
+        white-space: nowrap;
+        overflow: hidden;
+        text-overflow: ellipsis;
+      }
+
+      &__value {
+        font-size: 24px;
+        font-weight: 600;
+        color: $primary-blue;
+      }
+    }
+  }
+
+  &__table-wrapper {
+    background: $white;
+    border: 1px solid rgba(33, 63, 125, 0.06);
+    box-shadow: 3px 5px 20px rgba(0, 0, 0, 0.04);
+    border-radius: 4px;
+    overflow-x: auto; 
+    position: relative;
+    padding-bottom: 100px; // Padding for the options menu to not be cut off
+    margin-bottom: 20px;
+    width: 100%;
+    
+    // Custom scrollbar for better aesthetics
+    &::-webkit-scrollbar {
+      height: 6px;
+    }
+    &::-webkit-scrollbar-track {
+      background: #f1f1f1;
+    }
+    &::-webkit-scrollbar-thumb {
+      background: rgba(33, 63, 125, 0.2);
+      border-radius: 10px;
+    }
+  }
+}
+
+.table {
+  width: 100%;
+  border-collapse: collapse;
+  text-align: left;
+  min-width: 800px; // Ensures table maintains structure and forces scroll on small containers
+
+  thead {
+    th {
+      padding: 20px 24px;
+      font-size: 12px;
+      font-weight: 600;
+      color: $text-gray;
+      border-bottom: 1px solid rgba(33, 63, 125, 0.1);
+      
+      .header-cell {
+        display: flex;
+        align-items: center;
+        gap: 10px;
+        cursor: pointer;
+        white-space: nowrap;
+      }
+    }
+  }
+
+  tbody {
+    tr {
+      border-bottom: 1px solid rgba(33, 63, 125, 0.1);
+      background-color: $white;
+      &:last-child { border-bottom: none; }
+      &:hover { background-color: rgba(57, 205, 204, 0.02); }
+    }
+
+    td {
+      padding: 20px 24px;
+      font-size: 14px;
+      color: $text-gray;
+      position: relative;
+      white-space: nowrap;
+      max-width: 250px;
+      overflow: hidden;
+      text-overflow: ellipsis;
+    }
+  }
+}
+
+.status-pill {
+  padding: 6px 12px;
+  border-radius: 100px;
+  font-size: 12px;
+  font-weight: 400;
+  display: inline-block;
+
+  &--active { background: rgba(57, 205, 98, 0.1); color: #39CD62; }
+  &--inactive { background: rgba(84, 95, 125, 0.1); color: #545F7D; }
+  &--pending { background: rgba(233, 178, 0, 0.1); color: #E9B200; }
+  &--blacklisted { background: rgba(228, 3, 59, 0.1); color: #E4033B; }
+}
+
+.pagination {
+  @include m.flex-between;
+  margin-top: 20px;
+  color: $text-gray;
+  font-size: 14px;
+  width: 100%;
+
+  @include m.mobile {
+    flex-direction: column;
+    gap: 20px;
+    align-items: flex-start;
+  }
+
+  &__left {
+    display: flex;
+    align-items: center;
+    gap: 10px;
+
+    select {
+      background: rgba(33, 63, 125, 0.1);
+      border: none;
+      padding: 7px 12px;
+      border-radius: 4px;
+      color: $primary-blue;
+      font-weight: 600;
+      outline: none;
+      cursor: pointer;
+    }
+  }
+
+  &__right {
+    display: flex;
+    gap: 5px;
+    flex-wrap: wrap;
+
+    .page-btn {
+      width: 32px;
+      height: 32px;
+      @include m.flex-center;
+      border-radius: 4px;
+      font-size: 14px;
+      color: $text-gray;
+      opacity: 0.6;
+      transition: all 0.2s;
+
+      &:hover:not(:disabled):not(.dots) {
+        background: rgba(33, 63, 125, 0.05);
+        opacity: 1;
+      }
+
+      &.active {
+        opacity: 1;
+        font-weight: 600;
+        color: $primary-blue;
+      }
+
+      &.dots {
+        cursor: default;
+      }
+
+      &--nav {
+        background: rgba(33, 63, 125, 0.05);
+        font-size: 18px;
+      }
+
+      &:disabled {
+        cursor: not-allowed;
+        opacity: 0.2;
+      }
+    }
+  }
+}
+// Filter Popup
+.filter-popup {
+  position: absolute;
+  top: 50px; 
+  left: 20px;
+  background: $white;
+  border: 1px solid rgba(84, 95, 125, 0.14);
+  box-shadow: 3px 5px 20px rgba(0, 0, 0, 0.04);
+  border-radius: 4px;
+  padding: 20px;
+  width: 270px;
+  z-index: 100;
+
+  .filter-group {
+    margin-bottom: 15px;
+    label {
+      display: block;
+      color: #545F7D;
+      font-weight: 500;
+      margin-bottom: 6px;
+      font-size: 14px;
+    }
+    input, select {
+      width: 100%;
+      height: 40px;
+      border: 1px solid #213F7D26;
+      border-radius: 8px;
+      padding: 0 10px;
+    }
+  }
+
+  .filter-popup__btns {
+    display: flex;
+    gap: 10px;
+    button {
+      flex: 1;
+      height: 40px;
+      border-radius: 8px;
+      font-weight: 600;
+      &.btn-reset { border: 1px solid #545F7D; background: #fff; color: #545F7D; }
+      &.btn-filter { background: #39CDCC; border: none; color: #fff; }
+    }
+  }
+}
+
+
+.options-menu {
+  position: absolute;
+  right: 10px;        
+  top: 70%;           
+  background: $white;
+  box-shadow: 3px 5px 20px rgba(0, 0, 0, 0.1);
+  border: 1px solid rgba(84, 95, 125, 0.1);
+  border-radius: 4px;
+  z-index: 9999;      
+  display: flex;
+  flex-direction: column;
+  width: 180px;
+  padding: 10px 0;
+  pointer-events: auto;
+
+  button {
+    padding: 12px 20px;
+    text-align: left;
+    font-size: 14px;
+    color: $text-gray;
+    display: flex;
+    align-items: center;
+    gap: 10px;
+    width: 100%;
+    
+    .icon {
+      font-size: 16px;
+    }
+
+    &:hover {
+      background: rgba(57, 205, 204, 0.05);
+      color: $primary-blue;
+    }
+  }
+}
+
+.options-trigger {
+  padding: 8px;
+  border-radius: 50%;
+  transition: background 0.2s;
+  @include m.flex-center;
+  &:hover { background: rgba(0,0,0,0.05); }
+}
