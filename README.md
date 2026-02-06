@@ -48,5 +48,3 @@ For production applications, it is recommended to enable type-aware lint rules i
 
 ---
 
-## 📝 Required Code Comments
-To fulfill the assessment requirements for
