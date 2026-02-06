@@ -1,4 +1,4 @@
-# 🚀 Lendsqr Admin Portal (React + TypeScript + Vite)
+# 🚀 Lendsqr Admin Portal (React + TypeScript + Sccs + Vite)
 
 This project is a high-fidelity implementation of the Lendsqr Admin Dashboard, built to be a **100% pixel-perfect** representation of the Figma design. As a frontend engineer, the quality of this render is considered sacrosanct.
 
