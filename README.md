@@ -6,6 +6,11 @@ This project is a high-fidelity implementation of the Lendsqr Admin Dashboard, b
 
 ## how to login:
 open the api link then choose any user email
+https://697f923ed1548030ab666acd.mockapi.io/lendsqr/v1/users/
+max of the api is 100 use pick any user but i recommend you add any number within 100 to user 
+e.g(https://697f923ed1548030ab666acd.mockapi.io/lendsqr/v1/users/57)
+                       OR
+( https://697f923ed1548030ab666acd.mockapi.io/lendsqr/v1/users/9 )
 ## 🛠 Quick Customization Guide (For Non-Developers)
 If you need to edit this project without deep coding skills, follow these simple paths:
 
