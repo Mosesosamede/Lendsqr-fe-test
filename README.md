@@ -4,6 +4,8 @@ This project is a high-fidelity implementation of the Lendsqr Admin Dashboard, b
 
 ---
 
+## how to login:
+open the api link then choose any user email
 ## 🛠 Quick Customization Guide (For Non-Developers)
 If you need to edit this project without deep coding skills, follow these simple paths:
 
